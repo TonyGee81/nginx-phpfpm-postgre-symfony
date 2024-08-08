@@ -1,4 +1,4 @@
-# FM-test
+# Nginx - symfony project
 
 Run the docker-compose
 
