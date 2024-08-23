@@ -7,11 +7,10 @@ services:
     db:
         container_name: db
         image: 'postgres:latest'
-        restart: always
         environment:
             POSTGRES_USER: postgres
             POSTGRES_PASSWORD: password
-            POSTGRES_DB: dbtest
+            POSTGRES_DB: db
         volumes:
             - ./db-data/:/var/lib/postgresql/data/
         ports:
