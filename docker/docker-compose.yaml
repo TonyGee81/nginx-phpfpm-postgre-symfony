@@ -26,8 +26,6 @@ services:
             dockerfile: ./php-fpm/Dockerfile
         depends_on:
             - db
-        environment:
-            - APP_ENV=${APP_ENV}
         volumes:
             - ../api:/var/www
         networks:
