@@ -3,35 +3,18 @@ networks:
 
 services:
 
-    # postgres
-    db:
-        container_name: db
-        image: 'postgres:latest'
-        environment:
-            POSTGRES_USER: postgres
-            POSTGRES_PASSWORD: password
-            POSTGRES_DB: db
-        volumes:
-            - ./db-data/:/var/lib/postgresql/data/
-        ports:
-            - 5432:5432
-        networks:
-            - nginx-phpfpm-postgre
-
-    # php-fpm
     php-fpm:
         container_name: php-fpm
         build:
             context: .
             dockerfile: ./php-fpm/Dockerfile
         depends_on:
-            - db
+            - database
         volumes:
             - ../api:/var/www
         networks:
             - nginx-phpfpm-postgre
 
-    # nginx
     nginx:
         container_name: nginx
         build:
@@ -51,5 +34,18 @@ services:
         networks:
             - nginx-phpfpm-postgre
 
+    database:
+        image: 'postgres:latest'
+        restart: always
+        environment:
+            POSTGRES_USER: marketPlaceUser
+            POSTGRES_PASSWORD: F00D0M1RK3T
+            POSTGRES_DB: marketplace
+        volumes:
+            - ./db-data/:/var/lib/postgresql/data/
+        ports:
+            - 5432:5432
 
+volumes:
+    db-data:
 
