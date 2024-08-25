@@ -11,8 +11,8 @@ class AppFixtures extends Fixture
     public function load(ObjectManager $manager): void
     {
         $supplier = [
-            'dairyland',
-            'govegi'
+            'vegeland',
+            'gourmandland'
         ];
 
         for ($i = 0; $i < count($supplier) ; $i++) {
